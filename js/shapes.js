@@ -19,10 +19,16 @@ window.onload = function() {
     // equivalent set of six event listeners for your solutions. the first one is done for you.
 
     document.getElementById("hello").onclick = sayHello;
+    document.getElementById("rectangle").onclick = drawRectangle;
 }
 
 const sayHello = function() {
-    const text = prompt("Say something: ");
+    let text = prompt("Message: ");
+
+      var canvas = document.getElementById("student-canvas-1");
+      var ctx = canvas.getContext("2d");
+      ctx.font = "48px sans-serif";
+      ctx.strokeText(text, 30, 70);
 };
 
 /*
@@ -30,7 +36,10 @@ const sayHello = function() {
  */
 
 const drawRectangle = function() {
-    // write your exercise 2 code here
+    let width = prompt("Width: ");
+        let height = prompt("Height: ");
+            let x = prompt("X: ");
+                let y = prompt("Y: ");
 };
 
 /*
