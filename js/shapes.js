@@ -20,15 +20,21 @@ window.onload = function() {
 
     document.getElementById("hello").onclick = sayHello;
     document.getElementById("rectangle").onclick = drawRectangle;
+    document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
 }
 
 const sayHello = function() {
-    let text = prompt("Message: ");
+  let text = "";
+    text = prompt("Message: ");
+    if (text.length >= 50){
+         alert("Your message is too long. Keep it under 50 characters.");
+       }
 
-      var canvas = document.getElementById("student-canvas-1");
-      var ctx = canvas.getContext("2d");
-      ctx.font = "48px sans-serif";
-      ctx.strokeText(text, 30, 70);
+      const canvas = document.getElementById('student-canvas-1');
+    const ctx = canvas.getContext('2d');
+    ctx.font = '48px sans-serif';
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.strokeText(text, 30, 70);
 };
 
 /*
@@ -37,9 +43,48 @@ const sayHello = function() {
 
 const drawRectangle = function() {
     let width = prompt("Width: ");
-        let height = prompt("Height: ");
-            let x = prompt("X: ");
-                let y = prompt("Y: ");
+    let height = prompt("Height: ");
+    let x = prompt("X: ");
+    let y = prompt("Y: ");
+
+
+    if (width < 1 || width > canvas.width)  {
+         alert("Your width must be between 1 and 1024. ");
+         width = prompt("Width: ");
+         height = prompt("Height: ");
+         x = prompt("X: ");
+         y = prompt("Y: ");
+       }
+
+      else if (height < 1 || height > canvas.height)  {
+         alert("Your height must be between 1 and 512. ")
+         width = prompt("Width: ");
+         height = prompt("Height: ");
+         x = prompt("X: ");
+         y = prompt("Y: ");
+       }
+
+      else if (x < 1 || x > canvas.width)  {
+         alert("Your x-coordinate must be between 1 and 1024. ")
+         width = prompt("Width: ");
+         height = prompt("Height: ");
+         x = prompt("X: ");
+         y = prompt("Y: ");
+       }
+
+      else if (y < 1 || y > canvas.height)  {
+         alert("Your y-coordinate must be between 1 and 512. ")
+         width = prompt("Width: ");
+         height = prompt("Height: ");
+         x = prompt("X: ");
+         y = prompt("Y: ");
+       }
+
+         const canvas = document.getElementById('student-canvas-2');
+         const ctx = canvas.getContext('2d');
+         ctx.clearRect(0, 0, canvas.width, canvas.height);
+         ctx.strokeRect(x, y, width, height);
+
 };
 
 /*
@@ -47,7 +92,22 @@ const drawRectangle = function() {
  */
 
 const drawColoredRectangle = function() {
-    // write your exercise 3 code here
+
+  let color = prompt("Color: ")
+      color = color.toLowerCase();
+
+  if (color !== "blue" && color !== "black" && color !== "green" && color !== "orange" && color !== "purple" && color !== "red" && color !== "yellow" &&) {
+    alert(color + "is not a supported color.")
+    color = (prompt("Color: ")).toLowerCase();
+  }
+
+  else {
+    const canvas = document.getElementById('student-canvas-3');
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = color;
+    ctx.fillRect(10, 10, 100, 50);
+  }
+
 };
 
 /*
