@@ -111,7 +111,6 @@ const drawColoredRectangle = function() {
     ctx3.fillStyle = color;
     ctx3.fillRect(10, 10, 100, 50);
 
-
 };
 
 /*
@@ -120,15 +119,27 @@ const drawColoredRectangle = function() {
 
 const drawTriangle = function() {
 
+  let canvas4 = document.getElementById('student-canvas-4');
+   let ctx4 = canvas4.getContext('2d');
+   ctx.clearRect(0, 0, canvas.width, canvas.height);
+
 
   let side1 = prompt("Side 1: ");
   let side2 = prompt("Side 2: ");
   let side3 = prompt("Side 3: ");
 
-  let canvas4 = document.getElementById('student-canvas-4');
-  let ctx4 = canvas3.getContext('2d');
+  if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
+        alert("One of your sides is not a number.")
+      } else if (side1 == 0 || side2 == 0 || side3 == 0){
+        alert("That's not a valid right triangle.")
+        side1 = prompt("Side 1: ");
+        side2 = prompt("Side 2: ");
+        side3 = prompt("Side 3: ");
+      }
 
-  ctx4.clearRect(0, 0, 1024, 512);
+  let slant = Math.max(side1, side2, side3)
+  let height = Math.min (side1, side2, side3)
+  let base = Math.sqrt(slant*slant - height*height)
 
 
 };
