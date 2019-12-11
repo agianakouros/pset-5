@@ -6,30 +6,21 @@ window.onload = function() {
     document.getElementById("smile-sample").onclick = drawFaceStaff;
     document.getElementById("pyramid-sample").onclick = drawPyramidStaff;
 
-    // this is how we're connecting our buttons to our JavaScript functions. let's walk through it.
-    //
-    // document.getElementById("some-id")   <-- you need to give each button a unique ID
-    //                                          and access it in this manner
-    //
-    // onclick is an event that is fired when you click something (in our case, a button).
-    // when we give onclick a value, we're telling JavaScript what to do when we click the button.
-    // you should set onclick equal to your function names (i.e., sayHello).
-    //
-    // there are six event listeners being added for the staff solutions. you'll have an
-    // equivalent set of six event listeners for your solutions. the first one is done for you.
-
     document.getElementById("hello").onclick = sayHello;
     document.getElementById("rectangle").onclick = drawRectangle;
     document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
+    document.getElementById("triangle").onclick = drawTriangle;
+    document.getElementById("smile").onclick = drawFace;
 }
 
 const sayHello = function() {
   let text = "";
 
+  let canvas1 = document.getElementById('student-canvas-1');
+  let ctx1 = canvas1.getContext('2d');
+  ctx1.clearRect(0, 0, 1024, 128);
+
     text = prompt("Message: ");
-    let canvas1 = document.getElementById('student-canvas-1');
-    let ctx1 = canvas1.getContext('2d');
-    ctx1.clearRect(0, 0, 1024, 128);
     if (text.length >= 50){
          alert("Your message is too long. Keep it under 50 characters.");
          text = prompt("Message: ");
@@ -48,13 +39,18 @@ const sayHello = function() {
  */
 
 const drawRectangle = function() {
+
+  let canvas2 = document.getElementById('student-canvas-2');
+  let ctx2 = canvas2.getContext('2d');
+  ctx2.clearRect(0, 0, 1024, 128);
+
     let width = prompt("Width: ");
     let height = prompt("Height: ");
     let x = prompt("X: ");
     let y = prompt("Y: ");
 
 
-    if (width < 1 || width > 1024)  {
+    if (width < 0 || width > 1024 || (x + width) > 1024 )  {
          alert("Your width must be between 1 and 1024. ");
          width = prompt("Width: ");
          height = prompt("Height: ");
@@ -62,7 +58,7 @@ const drawRectangle = function() {
          y = prompt("Y: ");
        }
 
-      else if (height < 1 || height > 512)  {
+      else if (height < 0 || height > 512 || (y + height) > 512)  {
          alert("Your height must be between 1 and 512. ")
          width = prompt("Width: ");
          height = prompt("Height: ");
@@ -70,7 +66,7 @@ const drawRectangle = function() {
          y = prompt("Y: ");
        }
 
-      else if (x < 1 || x > 1024)  {
+      else if (x < 0 || x > 1024 || (x + width) > 1024 )  {
          alert("Your x-coordinate must be between 1 and 1024. ")
          width = prompt("Width: ");
          height = prompt("Height: ");
@@ -78,7 +74,7 @@ const drawRectangle = function() {
          y = prompt("Y: ");
        }
 
-      else if (y < 1 || y > 512)  {
+      else if (y < 0 || y > 512 || (y + height) > 512)  {
          alert("Your y-coordinate must be between 1 and 512. ")
          width = prompt("Width: ");
          height = prompt("Height: ");
@@ -86,8 +82,6 @@ const drawRectangle = function() {
          y = prompt("Y: ");
        }
 
-         let canvas2 = document.getElementById('student-canvas-2');
-         let ctx2 = canvas2.getContext('2d');
          ctx2.clearRect(0, 0, 1024, 512);
          ctx2.strokeRect(x, y, width, height);
 
@@ -99,20 +93,24 @@ const drawRectangle = function() {
 
 const drawColoredRectangle = function() {
 
+  let canvas3 = document.getElementById('student-canvas-3');
+  let ctx3 = canvas3.getContext('2d');
+
+  ctx3.clearRect(0, 0, 1024, 512);
+
   let color = prompt("Color: ")
       color = color.toLowerCase();
 
-  if (color !== "blue" && color !== "black" && color !== "green" && color !== "orange" && color !== "purple" && color !== "red" && color !== "yellow" ) {
-    alert(color + "is not a supported color.")
+  if (color === null){
+    ctx3.clearRect(0, 0, 1024, 512);
+  } else if (color !== "blue" && color !== "black" && color !== "green" && color !== "orange" && color !== "purple" && color !== "red" && color !== "yellow" ) {
+    alert(color + " is not a supported color.")
     color = (prompt("Color: ")).toLowerCase();
   }
 
-  else {
-    let canvas3 = document.getElementById('student-canvas-3');
-    let ctx3 = canvas3.getContext('2d');
     ctx3.fillStyle = color;
     ctx3.fillRect(10, 10, 100, 50);
-  }
+
 
 };
 
@@ -121,7 +119,18 @@ const drawColoredRectangle = function() {
  */
 
 const drawTriangle = function() {
-    // write your exercise 4 code here
+
+
+  let side1 = prompt("Side 1: ");
+  let side2 = prompt("Side 2: ");
+  let side3 = prompt("Side 3: ");
+
+  let canvas4 = document.getElementById('student-canvas-4');
+  let ctx4 = canvas3.getContext('2d');
+
+  ctx4.clearRect(0, 0, 1024, 512);
+
+
 };
 
 /*
