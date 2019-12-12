@@ -165,8 +165,11 @@ let radius;
     ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
 
     do {
-    let radius = (prompt("Radius: "))
-    if (radius === null) {
+      
+    radius = (prompt("Radius: "))
+
+    if (radius == null) {
+      ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
       break;
     } else if (radius < 32) {
       alert("Your radius must be at least 32.")
