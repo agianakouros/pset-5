@@ -119,15 +119,19 @@ const drawColoredRectangle = function() {
 
 const drawTriangle = function() {
 
+  let canvas4 = document.getElementById('student-canvas-4');
+  let ctx4 = canvas4.getContext('2d');
+  ctx4.clearRect(0, 0, canvas4.width, canvas4.height);
+
   let side1 = prompt("Side 1: ");
   let side2 = prompt("Side 2: ");
   let side3 = prompt("Side 3: ");
 
       let slant = Math.max(side1, side2, side3)
-      let height = Math.min (side1, side2, side3)
+      let height = Math.min(side1, side2, side3)
       let base = Math.sqrt(slant*slant - height*height)
 
-      if (base*base + height*height !== slant*slant || base == 0 || height == 0 || slant == 0  || side1+side2+side3-slant-height != base) {
+      if (base*base + height*height != slant*slant || base == 0 || height == 0 || slant == 0  || side1+side2+side3-slant-height != base) {
           alert("That's not a valid right triangle.")
     } else if (isNaN(side1) || isNaN(side2) || isNaN(side3)) {
       alert("One of your sides is not a number.")
