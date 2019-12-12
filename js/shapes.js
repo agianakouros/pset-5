@@ -20,17 +20,20 @@ const sayHello = function() {
   let ctx1 = canvas1.getContext('2d');
   ctx1.clearRect(0, 0, 1024, 128);
 
-    text = prompt("Message: ");
-    if (text.length >= 50){
+  text = prompt("Message: ");
+
+      if (text == null) {
+         ctx1.clearRect(0, 0, 1024, 128);
+    } else if (text.length >= 50) {
          alert("Your message is too long. Keep it under 50 characters.");
          text = prompt("Message: ");
-       } else if (text === null) {
-         ctx1 = canvas1.getContext('2d');
-         ctx1.clearRect(0, 0, 1024, 128);
-       }
-       ctx1.font = '48px sans-serif';
-       ctx1.clearRect(0, 0, 1024, 128);
-       ctx1.strokeText(text, 30, 70);
+    }
+
+      if (text != null) {
+        ctx1.font = '48px sans-serif';
+        ctx1.clearRect(0, 0, 1024, 128);
+        ctx1.strokeText(text, 30, 70);
+      }
 
 };
 
@@ -44,43 +47,36 @@ const drawRectangle = function() {
   let ctx2 = canvas2.getContext('2d');
   ctx2.clearRect(0, 0, 1024, 128);
 
-    let width = prompt("Width: ");
-    let height = prompt("Height: ");
-    let x = prompt("X: ");
-    let y = prompt("Y: ");
+let width;
+let height;
+let x;
+let y;
 
+do {
+  width = prompt("Width: ");
+  height = prompt("Height: ");
+  x = prompt("X: ");
+  y = prompt("Y: ");
 
-    if (width < 0 || width > 1024 || (x + width) > 1024 )  {
-         alert("Your width must be between 1 and 1024. ");
-         width = prompt("Width: ");
-         height = prompt("Height: ");
-         x = prompt("X: ");
-         y = prompt("Y: ");
-       }
+    if (width == null || height == null || x == null || y == null) {
+      ctx2.clearRect(0, 0, 1024, 128);
+      break;
+  }
 
-      else if (height < 0 || height > 512 || (y + height) > 512)  {
-         alert("Your height must be between 1 and 512. ")
-         width = prompt("Width: ");
-         height = prompt("Height: ");
-         x = prompt("X: ");
-         y = prompt("Y: ");
-       }
-
-      else if (x < 0 || x > 1024 || (x + width) > 1024 )  {
-         alert("Your x-coordinate must be between 1 and 1024. ")
-         width = prompt("Width: ");
-         height = prompt("Height: ");
-         x = prompt("X: ");
-         y = prompt("Y: ");
-       }
-
-      else if (y < 0 || y > 512 || (y + height) > 512)  {
-         alert("Your y-coordinate must be between 1 and 512. ")
-         width = prompt("Width: ");
-         height = prompt("Height: ");
-         x = prompt("X: ");
-         y = prompt("Y: ");
-       }
+    if (width > 1024 || width < 1) {
+    alert("Your width must be between 1 and 1024.")
+  } else if (height > 512 || height < 1) {
+    alert("Your height must be between 1 and 512.")
+  } else if (x < 1 || x > 1024) {
+    alert("Your x-coordinate must be between 1 and 1024.")
+  } else if (y < 1 || y > 512) {
+    alert("Your y-coordinate must be between 1 and 512.")
+  } else if (isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y)) {
+    alert("One of your values is not a number.")
+  } else if (Number(width) + Number(x) > 1024 || Number(height) + Number(y) > 512) {
+    alert("Your rectangle won't fit on the canvas.")
+  }
+} while (width > 1024 || width < 1 || height > 512 || height < 1 || x < 1 || x > 1024 || y < 1 || y > 512 || isNaN(width) || isNaN(height) || isNaN(x) || isNaN(y) || Number(width) + Number(x) > 1024 || Number(height) + Number(y) > 512)
 
          ctx2.clearRect(0, 0, 1024, 512);
          ctx2.strokeRect(x, y, width, height);
@@ -165,7 +161,7 @@ let radius;
     ctx5.clearRect(0, 0, canvas5.width, canvas5.height);
 
     do {
-      
+
     radius = (prompt("Radius: "))
 
     if (radius == null) {
