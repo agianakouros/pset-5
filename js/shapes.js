@@ -138,20 +138,13 @@ const drawTriangle = function() {
     if ((base*base + height*height == slant*slant) && (base < 1024 && height < 512) && (base != 0 && height != 0 && slant != 0) && (base != null && height != null && slant != null)) {
         height = height + 25
         base = base + 25
-        ctx.beginPath();
-        ctx.moveTo(25, 25);
-        ctx.lineTo(25, height);
-        ctx.lineTo(base, height)
-        ctx.lineTo(25, 25)
-        ctx.stroke();
+        ctx4.beginPath();
+        ctx4.moveTo(25, 25);
+        ctx4.lineTo(25, height);
+        ctx4.lineTo(base, height)
+        ctx4.lineTo(25, 25)
+        ctx4.stroke();
       };
-
-
-   let canvas4 = document.getElementById('student-canvas-4');
-   let ctx4 = canvas4.getContext('2d');
-   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-
 
 };
 
