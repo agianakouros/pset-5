@@ -11,6 +11,7 @@ window.onload = function() {
     document.getElementById("colored-rectangle").onclick = drawColoredRectangle;
     document.getElementById("triangle").onclick = drawTriangle;
     document.getElementById("smile").onclick = drawFace;
+    document.getElementById("pyramid").onclick = drawPyramid;
 }
 
 const sayHello = function() {
@@ -202,6 +203,49 @@ let radius;
  * Exercise 6 (extra credit).
  */
 
-const drawPyramid = function() {
-    // write your exercise 5 code here
+
+  const drawPyramid = function() {
+
+const canvas6 = document.getElementById('student-canvas-6');
+const ctx6 = canvas6.getContext('2d');
+
+let height = 0
+let distance = 0
+
+let heightModifier = 0
+let distanceModifier = 0
+
+let counter = 5
+let side;
+ctx6.clearRect(0, 0, canvas6.width, canvas6.height);
+
+do {
+
+  side = (prompt("Side: "))
+
+  if (side === null) {
+  break;
+} if (side >= 101) {
+  alert("Your pyramid won't fit on the canvas")
+} if (side < 1) {
+  alert("Your block size must be at least 1.")
+} if (isNaN(side)) {
+  alert("Your block size is not a number.")
+} } while (isNaN(side) || side >= 101 || side < 1)
+
+for (i = 5; i > 0; i--) {
+counter = i
+while(counter >= 1) {
+  ctx6.beginPath();
+  ctx6.rect(10 + Number(distance), (502 - side) - Number(height), Number(side), Number(side));
+  ctx6.stroke();
+  ctx6.closePath();
+  distance = Number(distance) + Number(side)
+  counter = counter - 1
+}
+heightModifier = heightModifier + 1
+distanceModifier = distanceModifier + 1
+height = heightModifier * side
+distance = distanceModifier * (1/2 * side)
+}
 };
